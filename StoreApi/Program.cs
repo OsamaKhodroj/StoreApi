@@ -15,16 +15,18 @@ namespace StoreApi
             // Add services to the container.
 
             builder.Services.AddControllers();
-            // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-            builder.Services.AddEndpointsApiExplorer();
-            builder.Services.AddSwaggerGen();
 
-            builder.Services.AddDbContextPool<StoreDbContext>(option =>
+            builder.Services.AddDbContext<StoreDbContext>(option =>
             {
                 option.UseSqlServer(builder.Configuration.GetConnectionString("dbConnection"));
             });
 
-            builder.Services.AddSingleton<IUser, UserService>();
+
+            // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+            builder.Services.AddEndpointsApiExplorer();
+            builder.Services.AddSwaggerGen();
+
+            builder.Services.AddScoped<IUser, UserService>();
 
             var app = builder.Build();
 
