@@ -5,7 +5,7 @@ namespace CompanyX.Store.Domains.Entites
 {
 
     [Table("Countries")]
-    public class Country
+    public class Country : BaseClass
     {
         [Required]
         [MaxLength(100)]
